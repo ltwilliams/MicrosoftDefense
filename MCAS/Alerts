@@ -1,14 +1,65 @@
 Alert: New popular app
+Description: This policy is triggered when a new app is utilised by greater than 5 users.
 Type: App Discovery Policy
 Category: Cloud Discovery
 Severity: High
 Filters:
     - Number of users greater than 5
 ====================================================
-Alert: New popular app
-Type:  Activity Policy
+Alert: Suspicious Login Location
+Description: This policy is triggered when a user logs in from a suspicious location
+Type: Activity Policy
 Category: Threat Detection
 Severity: High
 Filters:
+    - Login 
     - Location equals ###
+====================================================
+Alert: Suspicious Inbox Manipulation Rule
+Description: This policy is triggered when a suspicious inbox rule is created to move or delete emails.
+Type: Activity Policy
+Category: Threat Detection
+Severity: High
+Filters:
+    - New-InboxRule
+    - Delete or move rule including keywords: "superintendent" , "malware" , "malicious" , "suspicious" , "fake" , "scam" , "spam" , "helpdesk" , "technology" , "do not click" , "delete" , "password" , "do not open" , "phishing" , "phish" , "information" , "payment election" , "direct deposit" , "payroll" , "fraud" , "virus" , "hack" , "infect" , "steal" , "attack" , "hijack" , "Payment" , "workday" , "linkedin" , "Workday" , "Payroll" , "received" , "Fraud" , "spyware" , "software" , "attached" , "attachment" , "Help Desk" , "president" , "statement" , "threat" , "VIRUS WARNING" , "DO NOT OPEN" , "FW: Phishing Attempts" , "email" , "regarding" , "URGENT Warning" , "Acknowledge" , "Link" , "disregard" , "did u send me an email" , "Suspicious email" , "Spam" , "Virius" , "Viruis" , "Hack" , "Postmaster" , "Mailer-Daemon" , "Message Undeliverable" , "survey" , "hacked" , "Password" , "linked-in" , "linked in" , "invoice" , "Fidelity Net Benefits" , "Net Benefits" , "401k" , "Fidelity" , "Security code" , "ADP" , "Strategic consultancy services fees - Payment" , "Direct deposit" , "syed" , "Zoominfo" , "zoominfo" , "Re: Fw: Revised Invoice" , "security"
+====================================================
+Alert: Mass deletion (Teams)
+Description: This policy is triggered when a user deletes a large number of Teams.
+Type: Activity Policy
+Category: Threat Detection
+Severity: Low
+Act on:
+    - Repeated Activity
+    - Minimum repeated activities: 2 
+    - Within timeframe (minutes): 1 
+    - In a single app
+    - Count only unique target files or folders per user
+Filters:
+    - Activity type equals TeamDeleted
+    - App equals Microsoft Teams
+====================================================
+Alert: Access level change - custom(Teams)
+Description: This policy is triggered when a team's access level is changed from private to public.
+Type: Activity Policy
+Category: Threat Detection
+Severity: Low
+Act on:
+    - Single Activity
+Filters:
+    - Activity type equals TeamSettingChanged
+    - Activity objects Item equals private to public
+    - App equals Microsoft Teams
+====================================================
+Alert: External user added (Teams)
+Description: This policy is triggered when an external user is added to a team.
+Type: Activity Policy
+Category: Threat Detection
+Severity: Low
+Act on:
+    - Single Activity
+Filters:
+    - Activity type equals MemberAdded
+    - App equals Microsoft Teams
+    - User from group equals External Users as Activity object only
 ====================================================
