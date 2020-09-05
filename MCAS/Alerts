@@ -4,6 +4,11 @@ Category: Cloud Discovery
 Severity: High
 Filters:
     - Number of users greater than 5
-
-  
-    
+====================================================
+Alert: New popular app
+Type:  Activity Policy
+Category: Threat Detection
+Severity: High
+Filters:
+    - Location equals ###
+====================================================
