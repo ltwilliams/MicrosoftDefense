@@ -32,7 +32,7 @@ Severity: Low
 Act on:
     - Repeated Activity
     - Minimum repeated activities: 2 
-    - Within timeframe (minutes): 1 
+    - Within time-frame (minutes): 1 
     - In a single app
     - Count only unique target files or folders per user
 Filters:
