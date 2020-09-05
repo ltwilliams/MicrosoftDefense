@@ -1,0 +1,6 @@
+Alert: New popular app
+Type: App Discovery Policy
+Category: Cloud Discovery
+Severity: High
+Filters:
+    - Number of users greater than 5
